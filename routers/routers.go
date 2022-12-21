@@ -10,16 +10,16 @@ import (
 // SetupRouter function will perform all route operations
 func SetupRouter() *gin.Engine {
 
-	r := gin.Default()
+	route := gin.Default()
 
 	//Giving access to storage folder
-	r.Static("/storage", "storage")
+	route.Static("/storage", "storage")
 
 	//Giving access to template folder
-	r.Static("/templates", "templates")
-	r.LoadHTMLGlob("templates/*")
+	route.Static("/templates", "templates")
+	route.LoadHTMLGlob("templates/*")
 
-	r.Use(func(c *gin.Context) {
+	route.Use(func(c *gin.Context) {
 		// add header Access-Control-Allow-Origin
 		c.Writer.Header().Set("Content-Type", "application/json")
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
@@ -35,8 +35,11 @@ func SetupRouter() *gin.Engine {
 		}
 	})
 
+	// load landing pages
+	WebRoutes(route)
+
 	//API route for version 1
-	v1 := r.Group("/api/v1")
+	v1 := route.Group("/api/v1")
 	v1.GET("test-response", apiControllerV1.TestResponse)
 	//If you want to pass your route through specific middlewares
 	v1.Use(middlewares.UserMiddlewares())
@@ -45,10 +48,10 @@ func SetupRouter() *gin.Engine {
 	}
 
 	//API route for version 2
-	v2 := r.Group("/api/v2")
+	v2 := route.Group("/api/v2")
 
 	v2.POST("user-list", apiControllerV2.UserList)
 
-	return r
+	return route
 
 }

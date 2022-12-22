@@ -57,6 +57,7 @@ func init() {
 	db.Debug().AutoMigrate(
 		&User{},
 		&Status{},
+		&ServiceStation{},
 	)
 }
 

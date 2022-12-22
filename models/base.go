@@ -17,6 +17,10 @@ type IdModel struct {
 	ID uint `gorm:"primary_key" json:"id,omitempty"`
 }
 
+type StatusRelation struct {
+	StatusId uint `gorm:"not null" json:"status_id" sql:"DEFAULT:1"`
+}
+
 type TimeStamp struct {
 	CreatedAt time.Time  `gorm:"not null" json:"created_at" sql:"DEFAULT:CURRENT_TIMESTAMP"`
 	UpdatedAt time.Time  `gorm:"not null" json:"updated_at" sql:"DEFAULT:CURRENT_TIMESTAMP"`
@@ -53,6 +57,7 @@ func init() {
 	db.Debug().AutoMigrate(
 		&User{},
 		&Status{},
+		&ServiceStation{},
 	)
 }
 

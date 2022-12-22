@@ -5,6 +5,7 @@ type User struct {
 	IdModel
 	Name  string `gorm:"type:varchar(50)" json:"name" validate:"required"`
 	Email string `gorm:"type:varchar(50)" json:"email" validate:"required,email"`
+	StatusRelation
 	TimeStamp
 }
 

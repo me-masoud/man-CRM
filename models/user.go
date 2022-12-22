@@ -1,13 +1,14 @@
 package models
 
-//User structure
+// User structure
 type User struct {
-	Model
+	IdModel
 	Name  string `gorm:"type:varchar(50)" json:"name" validate:"required"`
 	Email string `gorm:"type:varchar(50)" json:"email" validate:"required,email"`
+	TimeStamp
 }
 
-//TableName return name of database table
+// TableName return name of database table
 func (u *User) TableName() string {
-	return "user"
+	return "users"
 }

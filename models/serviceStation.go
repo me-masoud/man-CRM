@@ -10,5 +10,5 @@ type ServiceStation struct {
 
 // TableName return name of database table
 func (s *ServiceStation) TableName() string {
-	return "service_stations"
+	return "service_station"
 }

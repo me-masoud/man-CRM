@@ -2,9 +2,6 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	apiControllerV1 "man-CRM/controllers/api/v1"
-	apiControllerV2 "man-CRM/controllers/api/v2"
-	"man-CRM/middlewares"
 )
 
 // SetupRouter function will perform all route operations
@@ -39,18 +36,19 @@ func SetupRouter() *gin.Engine {
 	WebRoutes(route)
 
 	//API route for version 1
-	v1 := route.Group("/api/v1")
-	v1.GET("test-response", apiControllerV1.TestResponse)
+	ApiV1(route)
+
+	//v1.GET("test-response", apiControllerV1.TestResponse)
 	//If you want to pass your route through specific middlewares
-	v1.Use(middlewares.UserMiddlewares())
-	{
-		v1.POST("user-list", apiControllerV1.UserList)
-	}
+	//v1.Use(middlewares.UserMiddlewares())
+	//{
+	//	v1.POST("user-list", apiControllerV1.UserList)
+	//}
 
 	//API route for version 2
-	v2 := route.Group("/api/v2")
-
-	v2.POST("user-list", apiControllerV2.UserList)
+	//v2 := route.Group("/api/v2")
+	//
+	//v2.POST("user-list", apiControllerV2.UserList)
 
 	return route
 

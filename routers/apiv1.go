@@ -7,5 +7,8 @@ import (
 
 func ApiV1(version1 *gin.Engine) {
 	Route := version1.Group("/api/v1")
+
+	// Service
 	Route.GET("services", v1.ServiceIndex)
+	Route.POST("services", v1.ServiceCreate)
 }

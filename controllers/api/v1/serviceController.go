@@ -22,3 +22,8 @@ func ServiceCreate(c *gin.Context) {
 	c.JSON(http.StatusOK, service.Value)
 
 }
+
+func ServiceShow(c *gin.Context) {
+	service := models.GetDB().First(&models.Service{}, c.Param("id"))
+	c.JSON(http.StatusOK, service)
+}

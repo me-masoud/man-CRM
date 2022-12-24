@@ -19,6 +19,9 @@ func ApiV1(version1 *gin.Engine) {
 	Route.POST("services", v1.ServiceStationCreate)
 
 	// Stuff
-
+	Route.GET("service-stations", v1.StuffIndex)
+	Route.GET("services/:id", v1.StuffShow)
+	Route.POST("services", v1.StuffCreate)
+	
 	// Status
 }

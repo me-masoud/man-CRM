@@ -15,13 +15,13 @@ func ApiV1(version1 *gin.Engine) {
 
 	// Service Station
 	Route.GET("service-stations", v1.ServiceStationIndex)
-	Route.GET("services/:id", v1.ServiceStationShow)
-	Route.POST("services", v1.ServiceStationCreate)
+	Route.GET("service-stations/:id", v1.ServiceStationShow)
+	Route.POST("service-stations", v1.ServiceStationCreate)
 
 	// Stuff
-	Route.GET("service-stations", v1.StuffIndex)
-	Route.GET("services/:id", v1.StuffShow)
-	Route.POST("services", v1.StuffCreate)
-	
+	Route.GET("stuffs", v1.StuffIndex)
+	Route.GET("stuffs/:id", v1.StuffShow)
+	Route.POST("stuffs", v1.StuffCreate)
+
 	// Status
 }

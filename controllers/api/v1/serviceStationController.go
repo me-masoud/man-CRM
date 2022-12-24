@@ -6,16 +6,16 @@ import (
 	"net/http"
 )
 
-func ServiceIndex(c *gin.Context) {
+func ServiceStationIndex(c *gin.Context) {
 
-	services := models.GetDB().Offset(3).Find(&models.Service{})
+	services := models.GetDB().Offset(3).Find(&models.ServiceStation{})
 	c.JSON(http.StatusOK, services)
 }
 
-func ServiceCreate(c *gin.Context) {
+func ServiceStationCreate(c *gin.Context) {
 	//status := models.GetDB().First(&models.Status{})
 
-	service := models.GetDB().Create(&models.Service{
+	service := models.GetDB().Create(&models.ServiceStation{
 		Name:        c.PostForm("name"),
 		Description: c.PostForm("description"),
 	})
@@ -23,7 +23,7 @@ func ServiceCreate(c *gin.Context) {
 
 }
 
-func ServiceShow(c *gin.Context) {
-	service := models.GetDB().First(&models.Service{}, c.Param("id"))
+func ServiceStationShow(c *gin.Context) {
+	service := models.GetDB().First(&models.ServiceStation{}, c.Param("id"))
 	c.JSON(http.StatusOK, service)
 }
